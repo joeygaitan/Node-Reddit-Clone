@@ -1,5 +1,6 @@
 // Require Libraries
 const express = require('express');
+const Post = require('./MVC/models/post')
 
 // App Setup
 const app = express();
@@ -29,12 +30,17 @@ require('./data/reddit-db');
 
 // Routes
 app.get('/', (req, res) => {
-    res.render('landing-page');
+
+  Post.find({})
+  .then(posts => {
+    res.render("posts-index", { posts });
+  })
+  .catch(err => {
+    console.log(err.message);
   });
 
-app.get('/', (req, res) => {
-  res.render('narbar');
-});
+    // res.render('landing-page');
+  });
 
 app.get('/posts/new', (req,res) => {
 
