@@ -29,23 +29,7 @@ require('./data/reddit-db');
 // Start Server
 
 // Routes
-app.get('/', (req, res) => {
 
-  Post.find({})
-  .then(posts => {
-    res.render("posts-index", { posts });
-  })
-  .catch(err => {
-    console.log(err.message);
-  });
-
-    // res.render('landing-page');
-  });
-
-app.get('/posts/new', (req,res) => {
-
-  res.render('posts-new.handlebars');
-})
 
 require('./MVC/controllers/posts.js')(app);
 
