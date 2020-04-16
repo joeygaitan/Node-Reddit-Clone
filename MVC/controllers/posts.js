@@ -3,7 +3,7 @@ const Post = require('../models/post');
 module.exports = (app) => {
 
     // CREATE
-    app.post('/posts/new', (req, res) => {
+    app.post('/post/new', (req, res) => {
       // INSTANTIATE INSTANCE OF POST MODEL
       const post = new Post(req.body);
 
@@ -30,9 +30,22 @@ module.exports = (app) => {
         
       });
     
-    app.get('/posts/new', (req,res) => {
+    app.get('/post/new', (req,res) => {
     
-      res.render('posts-new.handlebars');
+      res.render('post-new.handlebars');
     })
+
+    app.get("/posts/:id", function(req, res) {
+      // LOOK UP THE POST
+      console.log(req.params.id, "__________________")
+      Post.findById(req.params.id).lean()
+        .then(post => {
+          console.log(post,"ganlgagarguogangaopna;ponaw;nga;o")
+          res.render("posts-show", { post });
+        })
+        .catch(err => {
+          console.log(err.message);
+        });
+    });
 
   };

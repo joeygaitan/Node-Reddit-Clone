@@ -1,6 +1,6 @@
 // Require Libraries
 const express = require('express');
-const Post = require('./MVC/models/post')
+// const Post = require('./MVC/models/post')
 
 // App Setup
 const app = express();
