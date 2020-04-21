@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const Comment = require('../models/comment');
 
 module.exports = (app) => {
 
@@ -53,14 +54,11 @@ module.exports = (app) => {
     app.get("/posts/:id", function(req, res) {
       // LOOK UP THE POST
       console.log(req.params.id, "__________________")
-      Post.findById(req.params.id).lean()
-        .then(post => {
-          // console.log(post,"ganlgagarguogangaopna;ponaw;nga;o")
-          res.render("posts-show", { post });
-        })
-        .catch(err => {
-          console.log(err.message);
-        });
+      Post.findById(req.params.id).lean().populate('comments').then((post) => {
+        res.render('posts-show', { post })
+      }).catch((err) => {
+        console.log(err.message)
+      })
     });
 
   };

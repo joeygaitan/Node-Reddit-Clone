@@ -33,6 +33,8 @@ require('./data/reddit-db');
 
 require('./MVC/controllers/posts.js')(app);
 
+require('./MVC/controllers/comments.js')(app);
+
 app.listen(3000, () => {
   console.log('Hello friend ');
 });
