@@ -40,7 +40,7 @@ module.exports = (app) => {
       console.log(req.params.id, "__________________")
       Post.findById(req.params.id).lean()
         .then(post => {
-          console.log(post,"ganlgagarguogangaopna;ponaw;nga;o")
+          // console.log(post,"ganlgagarguogangaopna;ponaw;nga;o")
           res.render("posts-show", { post });
         })
         .catch(err => {

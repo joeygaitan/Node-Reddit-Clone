@@ -36,3 +36,5 @@ require('./MVC/controllers/posts.js')(app);
 app.listen(3000, () => {
   console.log('Hello friend ');
 });
+
+module.exports = app;
