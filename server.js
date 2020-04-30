@@ -1,10 +1,12 @@
 // Require Libraries
+var cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
 const express = require('express');
 // const Post = require('./MVC/models/post')
-
+require('dotenv').config();
 // App Setup
 const app = express();
-
+app.use(cookieParser()); // Add this after you initialize express
 // Middleware
 const exphbs  = require('express-handlebars');
 
@@ -34,6 +36,8 @@ require('./data/reddit-db');
 require('./MVC/controllers/posts.js')(app);
 
 require('./MVC/controllers/comments.js')(app);
+
+require('./MVC/controllers/auth.js')(app);
 
 app.listen(3000, () => {
   console.log('Hello friend ');
